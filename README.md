@@ -58,3 +58,11 @@ Then running again will use translated text:
     [2] Catalog Menu -> 目录菜单
     [3] Store Catalog -> 商店目录
     [4] Mini Shopping Cart -> 迷你购物车
+
+# Troubleshooting
+
+If the script stop immediatly, check for XML **namespace as they are problematic** with current implementation.
+
+A simple solution is to **remove namespace**, another one is to _submit a pull request_.
+
+Enjoy! :)
