@@ -1,4 +1,4 @@
-#!/usr/bin/env bashz
+#!/usr/bin/env bash
 # DESCRIPTION
 #   Translate <DefaultValue> and add a new <Value> element to each <Resource> node.
 #   To get a starting environement run the following command:
