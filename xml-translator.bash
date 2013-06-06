@@ -5,7 +5,7 @@
 #     cp Resources.{en,fr}.xml # create a copy from source lang to target lang
 #
 # USAGE
-#   ./xml-translator.bash en fr
+#   ./xml-translator.bash en fr input.xml
 #
 # @author: Édouard Lopez dev+coaxis@edouard-lopez.com
 
