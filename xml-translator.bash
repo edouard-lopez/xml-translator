@@ -55,16 +55,17 @@ function run() {
 
   for ((i=1; i<=$count; i++));
   do
+    local itemParent="$xpath[$i]"
 
     text="$(xmlstarlet sel -t \
-        -m "$xpath" \
+        -m "$itemParent" \
         -v "$i18nTag/text()" \
         -n "$inputFile"
       )"
     trad="$(translate "$text" "$sourceLang" "$targetLang")"
 
     printf "[%s] %s -> %s\n" "$i" "$text" "$trad"
-    xmlstarlet ed -a "$xpath/$i18nTag" \
+    xmlstarlet ed -a "$itemParent/$i18nTag" \
       -t elem -n "Value" \
       -v "$trad" "$outputFile" \
       > "$outputFile.tmp"
