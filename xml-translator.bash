@@ -13,12 +13,14 @@
 # @description should you hack Google translator
 hackGoogle=false
 
+# @description Xpath to each item is build as $xpath[i]/$i18nTag
+xpath="/Resources/Resource"
+i18nTag="DefaultValue"
+
 sourceLang="$1"
 targetLang="$2"
 inputFile="$3"
 outputFile="${inputFile%.xml}.$targetLang.xml"
-
-let count=$(xmlstarlet sel -t -m "/" -v "count(/Resources/Resource/DefaultValue)" "$inputFile")
 
 
 # @description Translate a phrase in a source language to a target language
@@ -48,11 +50,11 @@ function translate() {
 function run() {
   local sourceLang="$1"
   local targetLang="$2"
+  local let count=$(xmlstarlet sel -t -m "/" -v "count($xpath/$i18nTag)" "$inputFile")
+
 
   for ((i=1; i<=$count; i++));
   do
-    xpath="/Resources/Resource[$i]"
-    i18nTag="DefaultValue"
 
     text="$(xmlstarlet sel -t \
         -m "$xpath" \
