@@ -33,15 +33,18 @@ function run() {
   for ((i=1; i<=$count; i++));
   do
     echo "$i"
+    xpath="/Resources/Resource[$i]"
+    i18nTag="DefaultValue"
+
     text="$(xmlstarlet sel -t \
-        -m "/Resources/Resource[$i]" \
-        -v "./DefaultValue" \
+        -m "$xpath" \
+        -v "$i18nTag/text()" \
         -n "$inputFile"
       )"
     # trad="$(translate "$text" "$sourceLang" "$targetLang")"
     trad="dummy translation test"
     printf "%s -> %s\n" "$text" "$trad"
-    xmlstarlet ed -a "/Resources/Resource[$i]/DefaultValue" \
+    xmlstarlet ed -a "$xpath/$i18nTag" \
       -t elem -n "Value" \
       -v "$trad" "$outputFile" \
       > "$outputFile.tmp"
