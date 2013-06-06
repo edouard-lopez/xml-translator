@@ -12,8 +12,8 @@
 
 sourceLang="$1"
 targetLang="$2"
-inputFile="./Resources.$sourceLang.xml"
 outputFile="./Resources.$targetLang.xml"
+inputFile="$3"
 
 let count=$(xmlstarlet sel -t -m "/" -v "count(/Resources/Resource/DefaultValue)" "$inputFile")
 
