@@ -26,3 +26,32 @@ Then run this command to count:
 
     xmlstarlet sel -t -m "$xpath" -v "$i18nTag" "$inputFile" | wc -c
 
+# Usage
+
+Simply run (_psst_, read section [Be responsible](#Be responsible) below):
+
+    ./xml-translator.bash en zh ./test.en.xml
+    Overwrite target file: ./test.en.zh.xml ? [Y/n]
+
+## Be responsible
+
+By default the script _doesn't reach for Google Translator_.
+So running it will result in the use of dummy text:
+
+    [1] Terms And Conditions -> dummy text [offline mode]
+    [2] Catalog Menu -> dummy text [offline mode]
+    [3] Store Catalog -> dummy text [offline mode]
+    [4] Mini Shopping Cart -> dummy text [offline mode]
+
+You must **take responsabilities** for the use of this script. In order to do so, you need to set the `hackGoogle` variable to `true` in _xml-translator.bash_:
+
+```bash
+hackGoogle=true
+```
+
+Then running again will use translated text:
+
+    [1] Terms And Conditions -> 条款和条件
+    [2] Catalog Menu -> 目录菜单
+    [3] Store Catalog -> 商店目录
+    [4] Mini Shopping Cart -> 迷你购物车
