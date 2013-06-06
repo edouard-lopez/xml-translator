@@ -28,7 +28,10 @@ function translate() {
   local text="$1"
   local sourceLang="$2"
   local targetLang="$3"
-  curl -A "Mozilla/5.0 XML-translator" -s --data-urlencode text="$text" "http://translate.google.com/translate_a/t?client=t&hl=en&sl=$sourceLang&tl=$targetLang&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" | sed 's/\[\[\["\([^"]*\).*/\1/'
+  curl  -A "Mozilla/5.0 XML-translator" -s \
+        --data-urlencode text="$text" \
+        "http://translate.google.com/translate_a/t?client=t&hl=en&sl=$sourceLang&tl=$targetLang&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" \
+        | sed 's/\[\[\["\([^"]*\).*/\1/'
 }
 
 
