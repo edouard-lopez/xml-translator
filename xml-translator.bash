@@ -9,7 +9,6 @@
 #
 # @author: Édouard Lopez dev+coaxis@edouard-lopez.com
 
-
 sourceLang="$1"
 targetLang="$2"
 inputFile="$3"
@@ -50,6 +49,8 @@ function run() {
       > "$outputFile.tmp"
     cp "$outputFile"{.tmp,}
   done
+
+  rm "$outputFile.tmp"
 }
 
 run "$sourceLang" "$targetLang"
