@@ -38,7 +38,6 @@ function run() {
 
   for ((i=1; i<=$count; i++));
   do
-    echo "$i"
     xpath="/Resources/Resource[$i]"
     i18nTag="DefaultValue"
 
@@ -48,8 +47,8 @@ function run() {
         -n "$inputFile"
       )"
     # trad="$(translate "$text" "$sourceLang" "$targetLang")"
-    trad="dummy translation test"
-    printf "%s -> %s\n" "$text" "$trad"
+    trad="You need to uncomment previous line in xml-translator.bash"
+    printf "[%s] %s -> %s\n" "$i" "$text" "$trad"
     xmlstarlet ed -a "$xpath/$i18nTag" \
       -t elem -n "Value" \
       -v "$trad" "$outputFile" \
