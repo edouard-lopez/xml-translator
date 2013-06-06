@@ -44,6 +44,7 @@ function translate() {
 }
 
 
+#
 function run() {
   local sourceLang="$1"
   local targetLang="$2"
@@ -79,6 +80,7 @@ do
   [[ -f $outputFile ]] && read -p "Overwrite target file: $outputFile ? [Y/n]" erase
 
   if [[ -z $erase || $erase == [yY] ]]; then
+    printf "\n"
     cp "$inputFile" "$outputFile"
     run "$sourceLang" "$targetLang"
     exit 0
