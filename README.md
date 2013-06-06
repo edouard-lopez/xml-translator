@@ -33,6 +33,8 @@ Simply run (_psst_, read section [Be responsible](#Be responsible) below):
     ./xml-translator.bash en zh ./test.en.xml
     Overwrite target file: ./test.en.zh.xml ? [Y/n]
 
+Result XML –with translated string– is store in `test.en.zh.xml` ; target language is appended to input filename.
+
 ## Be responsible
 
 By default the script _doesn't reach for Google Translator_.
