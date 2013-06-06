@@ -4,6 +4,7 @@
 
 # Dependencies
 
+* [cURL](http://curl.haxx.se/): library and command-line tool for transferring data using various protocols ;
 * [XMLStarlet](http://xmlstar.sourceforge.net/): command line XML toolkit ;
 * [Google Translator](http://translate.google.com/): Google's free online language translation service. The service _can be disrupted or break compatibility_ without notice.
 
