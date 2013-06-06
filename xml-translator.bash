@@ -16,7 +16,14 @@ outputFile="${inputFile%.xml}.$targetLang.xml"
 
 let count=$(xmlstarlet sel -t -m "/" -v "count(/Resources/Resource/DefaultValue)" "$inputFile")
 
-# Translates a phrase from English to Portuguese
+
+# @description Translate a phrase in a source language to a target language
+#
+# @param    $1|$text  text to translate
+# @param    $2|$sourceLang  language code for source (@see. https://developers.google.com/translate/v2/using_rest#language-params)
+# @param    $3|$targetLang  language code for source (@see. https://developers.google.com/translate/v2/using_rest#language-params)
+#
+# @return    string   HTML page return by translator
 function translate() {
   local text="$1"
   local sourceLang="$2"
