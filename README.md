@@ -16,13 +16,13 @@ You should also be aware that Google provide a [Translation API](https://develop
 
 If you want to get an idea of the cost of the translation, you can use the following command to count characters to translate.
 
-First, define `xpath`, `i18nTag` and `xmlFile` to your need :
+First, define `xpath`, `i18nTag` and `inputFile` to your need :
 
     xpath="/xpath/to/parent"
     i18nTag="tag_with_i18n"
-    xmlFile=./input.xml
+    inputFile=./input.xml
 
 Then run this command to count:
 
-    xmlstarlet sel -t -m "$xpath" -v "$i18nTag" "$xmlFile" | wc -c
+    xmlstarlet sel -t -m "$xpath" -v "$i18nTag" "$inputFile" | wc -c
 
