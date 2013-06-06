@@ -7,7 +7,7 @@
 # USAGE
 #   ./xml-translator.bash en fr input.xml
 #
-# @author: Édouard Lopez dev+coaxis@edouard-lopez.com
+# @author: Édouard Lopez <dev+xml-translator@edouard-lopez.com>
 
 sourceLang="$1"
 targetLang="$2"
