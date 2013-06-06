@@ -9,6 +9,10 @@
 #
 # @author: Édouard Lopez <dev+xml-translator@edouard-lopez.com>
 
+
+# @description should you hack Google translator
+hackGoogle=false
+
 sourceLang="$1"
 targetLang="$2"
 inputFile="$3"
@@ -28,10 +32,15 @@ function translate() {
   local text="$1"
   local sourceLang="$2"
   local targetLang="$3"
-  curl  -A "Mozilla/5.0 XML-translator" -s \
-        --data-urlencode text="$text" \
-        "http://translate.google.com/translate_a/t?client=t&hl=en&sl=$sourceLang&tl=$targetLang&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" \
-        | sed 's/\[\[\["\([^"]*\).*/\1/'
+
+  if $hackGoogle; then
+    curl  -A "Mozilla/5.0 XML-translator" -s \
+          --data-urlencode text="$text" \
+          "http://translate.google.com/translate_a/t?client=t&hl=en&sl=$sourceLang&tl=$targetLang&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" \
+          | sed 's/\[\[\["\([^"]*\).*/\1/'
+  else
+    echo "dummy text [offline mode]"
+  fi
 }
 
 
@@ -49,8 +58,8 @@ function run() {
         -v "$i18nTag/text()" \
         -n "$inputFile"
       )"
-    # trad="$(translate "$text" "$sourceLang" "$targetLang")"
-    trad="You need to uncomment previous line in xml-translator.bash"
+    trad="$(translate "$text" "$sourceLang" "$targetLang")"
+
     printf "[%s] %s -> %s\n" "$i" "$text" "$trad"
     xmlstarlet ed -a "$xpath/$i18nTag" \
       -t elem -n "Value" \
