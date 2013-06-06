@@ -53,4 +53,18 @@ function run() {
   rm "$outputFile.tmp"
 }
 
-run "$sourceLang" "$targetLang"
+
+while :
+do
+
+  erase="y"
+  [[ -f $outputFile ]] && read -p "Overwrite target file: $outputFile ? [Y/n]" erase
+
+  if [[ -z $erase || $erase == [yY] ]]; then
+    cp "$inputFile" "$outputFile"
+    run "$sourceLang" "$targetLang"
+    exit 0
+  else
+    exit 1
+  fi
+done
